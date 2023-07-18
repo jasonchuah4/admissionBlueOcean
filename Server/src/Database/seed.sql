@@ -1,6 +1,6 @@
 
 
-\COPY students (first_name, last_name, email, phone) FROM /docker-entrypoint-initdb.d/student.csv WITH (FORMAT csv, DELIMITER ',');
+\COPY students (first_name, last_name, email, phone) FROM src/scripts/student.csv WITH (FORMAT csv, DELIMITER ',');
 INSERT INTO interviewers (students_id, first_name, last_name, email, password)
 VALUES
     (23, 'Samson', 'Brown', 'samson@rr.com', 'password'),
@@ -11,7 +11,7 @@ VALUES
     (5, 'Danny', 'Andrews', 'danny@email.com', 'password');
 
 
-\COPY interviews (students_id, interviewers_id, interview_date, question_notes, notes, results) FROM /docker-entrypoint-initdb.d/interview.csv WITH (FORMAT csv, DELIMITER ',');
+\COPY interviews (students_id, interviewers_id, interview_date, question_notes, notes, results) FROM src/scripts/interview.csv WITH (FORMAT csv, DELIMITER ',');
 
 INSERT INTO questions (questions)
 VALUES
