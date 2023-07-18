@@ -5,4 +5,4 @@ RUN npm ci && npm install
 COPY . .
 EXPOSE 3000
 RUN ls
-CMD ["npm", "run", "dev"]
+CMD "npm rebuild esbuild && npm run dev"
