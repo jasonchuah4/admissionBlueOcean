@@ -1,11 +1,13 @@
 databases:
   - name: blueocean # Render PG14
+    plan: free
     databaseName: blueocean
     user: postgres_blueocean
     postgresMajorVersion: 15
 
 services:
   - type: web
+    plan: free
     name: ws
     runtime: docker
     repo: https://github.com/jasonchuah4/admissionBlueOcean.git
@@ -25,6 +27,7 @@ services:
           property: host
 
   - type: web
+    plan: free
     name: admission-blue-server
     runtime: docker
     repo: https://github.com/jasonchuah4/admissionBlueOcean.git
