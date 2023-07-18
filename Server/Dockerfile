@@ -4,6 +4,5 @@ COPY package*.json ./
 RUN npm ci && npm install
 COPY . .
 EXPOSE 3000
-CMD cd ./code
-CMD ll
-CMD ["node", "server.js"]
+RUN ll
+CMD ["node", "src/server.js"]
