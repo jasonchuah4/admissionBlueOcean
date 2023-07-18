@@ -5,10 +5,6 @@ databases:
     postgresMajorVersion: 15
 
 services:
-  - type: web # Render Redis
-    name: admission-blue-ocean-redis
-    ipAllowList: []
-
   - type: web
     name: ws
     runtime: docker
