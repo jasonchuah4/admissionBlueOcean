@@ -4,4 +4,4 @@ COPY package*.json .
 RUN npm ci && npm install
 COPY . .
 EXPOSE 3000
-CMD echo "JUST HERE FOR DEVELOPMENT!"
+CMD "npm rebuild esbuild && npm run dev"

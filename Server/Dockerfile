@@ -4,4 +4,4 @@ COPY package*.json .
 RUN npm ci && npm install
 COPY . .
 EXPOSE 3000
-CMD ["npm", "run"]
+CMD ["npm", "run", "dev"]
