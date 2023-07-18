@@ -1,7 +1,8 @@
 FROM node:16-alpine
 WORKDIR /code
-COPY package*.json .
+COPY package*.json ./
 RUN npm ci && npm install
 COPY . .
 EXPOSE 3000
-CMD "npm rebuild esbuild && npm run dev"
+RUN ls
+CMD ["vite", "preview"]
