@@ -32,7 +32,6 @@ services:
     repo: https://github.com/jasonchuah4/admissionBlueOcean.git
     branch: main
     dockerfilePath: ./Server/Dockerfile
-    startCommand: npm run dev
     envVars:
       - key: DATABASE_URL
         fromDatabase:
