@@ -12,7 +12,7 @@ services:
     runtime: docker
     repo: https://github.com/jasonchuah4/admissionBlueOcean.git
     branch: main
-    dockerfilePath: ./client/Dockerfile
+    rootDir: client
     envVars:
       - key: PORT
         fromService:
