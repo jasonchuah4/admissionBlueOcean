@@ -5,4 +5,4 @@ RUN npm ci && npm install
 COPY . .
 EXPOSE 3000
 RUN ls
-CMD ["vite", "preview"]
+CMD ["npm", "run", "serve"]
