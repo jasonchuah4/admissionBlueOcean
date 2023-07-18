@@ -1,0 +1,50 @@
+databases:
+  - name: blueocean # Render PG14
+    databaseName: blueocean
+    user: postgres
+    postgresMajorVersion: 15
+
+services:
+  - type: web # Render Redis
+    name: admission-blue-ocean-redis
+    ipAllowList: []
+
+  - type: web
+    name: ws
+    runtime: docker
+    repo: https://github.com/jasonchuah4/admissionBlueOcean.git
+    branch: main
+    rootDir: client
+    dockerfilePath: ./client/Dockerfile
+    envVars:
+      - key: PORT
+        fromService:
+          type: web
+          name: admission-blue-server
+          property: port
+      - key: API_URL
+        fromService:
+          type: web
+          name: admission-blue-server
+          property: host
+        value: anycable:50051 # need to reference anycable service
+      - key : ANYCABLE_DEBUG
+        value: 1
+
+  - type: web
+    name: admission-blue-server
+    runtime: docker
+    repo: https://github.com/jasonchuah4/admissionBlueOcean.git
+    branch: main
+    rootDir: server
+    dockerfilePath: ./Server/Dockerfile
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          type: database
+          name: blueocean
+          property: connectionString
+      - key: PORT
+        value: "80"
+      - key: INTERVIEWER_TOKEN
+        value: "special-awesome-stinky-smelly-super-secret-unique-access-token"
