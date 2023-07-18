@@ -5,6 +5,7 @@ RUN npm ci && npm install
 COPY . .
 EXPOSE 3000
 RUN ls
+RUN apk --no-cache add postgresql-client
 # COPY pg-data /var/lib/postgresql/data
 COPY src/Database/migration.sql /docker-entrypoint-initdb.d/migration.sql
 COPY src/Database/seed.sql /docker-entrypoint-initdb.d/seed.sql
