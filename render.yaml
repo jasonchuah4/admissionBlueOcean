@@ -31,6 +31,7 @@ services:
     runtime: docker
     repo: https://github.com/jasonchuah4/admissionBlueOcean.git
     branch: main
+    rootDir: Server
     dockerfilePath: ./Server/Dockerfile
     envVars:
       - key: DATABASE_URL
