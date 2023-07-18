@@ -10,10 +10,10 @@ COPY src/Database/migration.sql /docker-entrypoint-initdb.d/
 COPY src/Database/seed.sql /docker-entrypoint-initdb.d/
 COPY src/scripts/student.csv /docker-entrypoint-initdb.d/
 COPY src/scripts/interview.csv /docker-entrypoint-initdb.d/
-RUN docker-entrypoint.sh postgres && sleep 5 && \
-        echo '\\COPY students FROM \'/docker-entrypoint-initdb.d/student.csv\' WITH (FORMAT csv, DELIMITER ',');' >> /docker-entrypoint-initdb.d/seed.sql && \
-        echo '\\COPY interviewers FROM \'/docker-entrypoint-initdb.d/interview.csv\' WITH (FORMAT csv, DELIMITER ',');' >> /docker-entrypoint-initdb.d/seed.sql && \
-        docker-entrypoint.sh postgres
+RUN docker-entrypoint.sh postgres && sleep 5
+RUN echo '\\COPY students FROM \'/docker-entrypoint-initdb.d/student.csv\' WITH (FORMAT csv, DELIMITER ',');' >> /docker-entrypoint-initdb.d/seed.sql
+RUN echo '\\COPY interviewers FROM \'/docker-entrypoint-initdb.d/interview.csv\' WITH (FORMAT csv, DELIMITER ',');' >> /docker-entrypoint-initdb.d/seed.sql
 RUN cd ./docker-entrypoint-initdb.d
 RUN ls
+CMD ["docker-entrypoint.sh postgres && sleep 5 && docker-entrypoint.sh postgres"]
 CMD ["node", "src/server.js"]
