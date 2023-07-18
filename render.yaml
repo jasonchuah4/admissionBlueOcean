@@ -10,7 +10,6 @@ services:
     plan: free
     name: admission-blue-client
     runtime: docker
-    repo: https://github.com/jasonchuah4/admissionBlueOcean.git
     branch: main
     rootDir: client
     envVars:
@@ -29,7 +28,6 @@ services:
     plan: free
     name: admission-blue-server
     runtime: docker
-    repo: https://github.com/jasonchuah4/admissionBlueOcean.git
     branch: main
     rootDir: Server
     envVars:
