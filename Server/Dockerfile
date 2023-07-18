@@ -14,9 +14,7 @@ COPY src/scripts/interview.csv /docker-entrypoint-initdb.d/interview.csv
 # RUN docker-entrypoint.sh postgres && sleep 5
 # RUN echo '\\COPY students FROM \'/docker-entrypoint-initdb.d/student.csv\' WITH (FORMAT csv, DELIMITER ',');' >> /docker-entrypoint-initdb.d/seed.sql
 # RUN echo '\\COPY interviewers FROM \'/docker-entrypoint-initdb.d/interview.csv\' WITH (FORMAT csv, DELIMITER ',');' >> /docker-entrypoint-initdb.d/seed.sql
-RUN PGPASSWORD=1TEPFBJ4pl40Yd9KwcA7rzchcp6GKTZ2 psql -h dpg-cir0crlph6ev5r98kiig-a.oregon-postgres.render.com -U postgres_blueocean blueocean_t86e && \
-    echo '\\COPY students FROM '/docker-entrypoint-initdb.d/student.csv' WITH (FORMAT csv, DELIMITER ',');' >> /docker-entrypoint-initdb.d/seed.sql && \
-    docker-entrypoint.sh postgres
+RUN PGPASSWORD=1TEPFBJ4pl40Yd9KwcA7rzchcp6GKTZ2 psql -h dpg-cir0crlph6ev5r98kiig-a.oregon-postgres.render.com -U postgres_blueocean -d blueocean_t86e -a -f src/Database/migration.sql
 
 # CMD ["docker-entrypoint.sh postgres && sleep 5 && docker-entrypoint.sh postgres"]
 CMD ["node", "src/server.js"]
