@@ -1,7 +1,7 @@
 databases:
   - name: blueocean # Render PG14
     databaseName: blueocean
-    user: postgres
+    user: postgres_blueocean
     postgresMajorVersion: 15
 
 services:
@@ -40,7 +40,5 @@ services:
           type: database
           name: blueocean
           property: connectionString
-      - key: PORT
-        value: "80"
       - key: INTERVIEWER_TOKEN
         value: "special-awesome-stinky-smelly-super-secret-unique-access-token"
