@@ -6,4 +6,4 @@ COPY . .
 EXPOSE 3000
 CMD cd ./code
 CMD ll
-CMD ["node", "--watch server.js"]
+CMD ["node", "server.js"]
